@@ -251,6 +251,13 @@
             display: block;
         }
 
+        .error-message a {
+            color: #34d399;
+            text-decoration: underline;
+            margin-top: 8px;
+            display: inline-block;
+        }
+
         @media (max-width: 480px) {
             .container {
                 padding: 30px 24px;
@@ -271,7 +278,7 @@
     <div class="container">
         <div class="radio-header">
             <div class="radio-icon">
-                <img src="logo.png" alt="Rádio Verdes Campos FM">
+                <img src="LOGO.png" alt="Rádio Verdes Campos FM">
             </div>
             <p class="radio-tagline">A Região Se Liga Aqui!</p>
             <div class="status-badge" id="statusBadge">
@@ -309,7 +316,7 @@
     </div>
 
     <audio id="audioPlayer" preload="none">
-        <source src="http://server15.srvsh.com.br:6839/stream" type="audio/mpeg">
+        <source src="https://server15.srvsh.com.br:8022/stream" type="audio/mpeg">
         Seu navegador não suporta o player de áudio.
     </audio>
 
