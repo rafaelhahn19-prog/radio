@@ -1,89 +1,20 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <title>Rádio ao Vivo</title>
+<script>
+  const audio = document.getElementById("radio");
+  const btn = document.getElementById("playBtn");
+  const status = document.getElementById("status");
 
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background: #111;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: Arial, sans-serif;
-      color: white;
-    }
-
-    .player {
-      text-align: center;
-    }
-
-    .title {
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
-
-    .play-btn {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      border: none;
-      background: #1db954;
-      color: white;
-      font-size: 40px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .play-btn:hover {
-      background: #17a74a;
-      transform: scale(1.05);
-    }
-
-    .status {
-      margin-top: 15px;
-      font-size: 14px;
-      opacity: 0.8;
-    }
-  </style>
-</head>
-
-<body>
-
-  <div class="player">
-    <div class="title">📻 Verdes Campos FM</div>
-
-    <button class="play-btn" id="playBtn">▶</button>
-
-    <div class="status" id="status">Parado</div>
-  </div>
-
-  <audio id="radio">
-    <source src="https://server15.srvsh.com.br:6838/stream">
-  </audio>
-
-  <script>
-    const audio = document.getElementById("radio");
-    const btn = document.getElementById("playBtn");
-    const status = document.getElementById("status");
-
-    let playing = false;
-
-    btn.addEventListener("click", () => {
-      if (!playing) {
-        audio.play();
+  btn.addEventListener("click", () => {
+    if (audio.paused) {
+      audio.play().then(() => {
         btn.innerHTML = "⏸";
         status.innerText = "Tocando ao vivo";
-      } else {
-        audio.pause();
-        btn.innerHTML = "▶";
-        status.innerText = "Pausado";
-      }
-      playing = !playing;
-    });
-  </script>
-
-</body>
-</html>
+      }).catch(err => {
+        console.log("Erro ao tocar:", err);
+      });
+    } else {
+      audio.pause();
+      btn.innerHTML = "▶";
+      status.innerText = "Pausado";
+    }
+  });
+</script>
