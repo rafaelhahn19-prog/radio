@@ -1,20 +1,6 @@
-<script>
-  const audio = document.getElementById("radio");
-  const btn = document.getElementById("playBtn");
-  const status = document.getElementById("status");
-
-  btn.addEventListener("click", () => {
-    if (audio.paused) {
-      audio.play().then(() => {
-        btn.innerHTML = "⏸";
-        status.innerText = "Tocando ao vivo";
-      }).catch(err => {
-        console.log("Erro ao tocar:", err);
-      });
-    } else {
-      audio.pause();
-      btn.innerHTML = "▶";
-      status.innerText = "Pausado";
-    }
-  });
-</script>
+<iframe 
+  src="https://server15.srvsh.com.br:6838" 
+  width="100%" 
+  height="200" 
+  frameborder="0">
+</iframe>
