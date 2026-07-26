@@ -1422,8 +1422,10 @@
     </style>
 </head>
 <body>
-    <audio id="audioPlayer" preload="none">
-        <source src="https://server12.srvsh.com.br:9238/stream" type="audio/mpeg">
+    <audio id="audioPlayer" preload="none" crossorigin="anonymous">
+        <source src="https://server12.srvsh.com.br:9238/;" type="audio/aacp">
+        <source src="https://server12.srvsh.com.br:9238/stream">
+        <source src="https://server12.srvsh.com.br:9238/;stream.mp3">
         Seu navegador não suporta o player de áudio.
     </audio>
 
@@ -1468,7 +1470,7 @@
                 </div>
                 <div class="error-message" id="errorMessage">
                     <p><strong>⚠️ Não foi possível conectar ao streaming.</strong> Verifique sua conexão com a internet ou tente ouvir diretamente.</p>
-                    <a href="https://server12.srvsh.com.br:9238/stream" target="_blank">🎧 Clique aqui para ouvir diretamente no navegador</a>
+                    <a href="https://server12.srvsh.com.br:9238/;" target="_blank">🎧 Clique aqui para ouvir diretamente no navegador</a>
                 </div>
             </div>
 
@@ -1789,7 +1791,7 @@
             ig: 'verdescamposfm',
             fb: 'verdescamposfm',
             location: 'Centro da Região\nCampos Verdes, Brasil',
-            stream: 'https://server12.srvsh.com.br:9238/stream'
+            stream: 'https://server12.srvsh.com.br:9238/;'
         },
         about: {
             title: 'A rádio que é a voz da região',
@@ -1942,8 +1944,10 @@
         // Player
         document.getElementById('playerNpStation').textContent = S.freq + ' • ' + S.slogan;
         document.getElementById('npArtist').textContent = S.name + ' ' + S.freq;
-        document.getElementById('audioPlayer').querySelector('source').src = S.stream;
-        document.getElementById('audioPlayer').load();
+        audioPlayer.src = S.stream;
+        audioPlayer.load();
+        const directLink = document.querySelector('#errorMessage a');
+        if (directLink) directLink.href = S.stream;
 
         // Footer
         document.getElementById('footerLogo').textContent = '📻 ' + S.name;
@@ -2047,13 +2051,42 @@
 
     let isPlaying = false;
     const emojiAlbums = ['🎵', '🎸', '🎹', '🎤', '🎺', '🎷', '🥁', '🎻'];
+    let fallbackIndex = 0;
+    let fallbackUrls = [];
+
+    function buildFallbacks(mainUrl) {
+        const result = new Set([mainUrl]);
+        try {
+            const u = new URL(mainUrl);
+            result.add(u.origin + '/;');
+            result.add(u.origin + '/stream');
+            result.add(u.origin + '/;stream.mp3');
+        } catch (_) {}
+        fallbackUrls = [...result];
+        fallbackIndex = 0;
+    }
+
+    function tryNextFallback() {
+        if (fallbackIndex >= fallbackUrls.length - 1) {
+            errorMessage.classList.add('show');
+            return;
+        }
+        fallbackIndex++;
+        const next = fallbackUrls[fallbackIndex];
+        audioPlayer.src = next;
+        audioPlayer.load();
+        audioPlayer.play().catch(() => {});
+    }
 
     function togglePlay() {
         if (isPlaying) {
             audioPlayer.pause();
         } else {
+            buildFallbacks(CONFIG.station.stream);
+            audioPlayer.src = fallbackUrls[0];
+            audioPlayer.load();
             audioPlayer.play().catch(() => {
-                errorMessage.classList.add('show');
+                tryNextFallback();
             });
         }
     }
@@ -2087,6 +2120,10 @@
         updatePlayButton();
     };
     audioPlayer.onerror = () => {
+        if (fallbackIndex < fallbackUrls.length - 1) {
+            tryNextFallback();
+            return;
+        }
         errorMessage.classList.add('show');
         isPlaying = false;
         updatePlayButton();
@@ -2103,8 +2140,14 @@
     async function fetchNowPlaying() {
         try {
             const S = CONFIG.station;
-            const url = S.stream.replace(/\/?$/, '/statistics?json=1');
-            const response = await fetch(url, { method: 'GET', mode: 'cors' });
+            let statsUrl;
+            try {
+                const u = new URL(S.stream);
+                statsUrl = u.origin + '/statistics?json=1';
+            } catch (_) {
+                statsUrl = S.stream.replace(/\/[^/]*$/, '/statistics?json=1');
+            }
+            const response = await fetch(statsUrl, { method: 'GET', mode: 'cors' });
             if (response.ok) {
                 const data = await response.json();
                 if (data && data.streams && data.streams[0]) {
