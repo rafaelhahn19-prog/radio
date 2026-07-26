@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Verdes Campos FM - A Região Se Liga Aqui! Rádio com a melhor programação, músicas e notícias da região.">
     <title>Verdes Campos FM - A Região Se Liga Aqui!</title>
     <style>
         * {
@@ -11,193 +12,735 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #0a0e27 0%, #1a4d2e 50%, #0f172a 100%);
+            background: #f8f9fa;
+            color: #1f2937;
+            padding-bottom: 90px;
+        }
+
+        .top-header {
+            background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+            color: white;
+            padding: 8px 20px;
+            font-size: 13px;
+        }
+
+        .top-header-content {
+            max-width: 1100px;
+            margin: 0 auto;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            color: #ffffff;
-            padding: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
-        .container {
-            width: 100%;
-            max-width: 480px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border-radius: 32px;
-            padding: 40px 30px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .top-header a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: opacity 0.2s;
         }
 
-        .radio-header {
-            text-align: center;
-            margin-bottom: 40px;
+        .top-header a:hover {
+            opacity: 0.8;
         }
 
-        .radio-icon {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, #10b981, #059669);
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo-img {
+            width: 64px;
+            height: 64px;
             border-radius: 50%;
+            background: linear-gradient(135deg, #10b981, #059669);
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 0 auto 24px;
-            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
-            font-size: 56px;
+            font-size: 32px;
+            color: white;
+            object-fit: cover;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
         }
 
-        .radio-name {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 8px;
+        .logo-text h1 {
+            font-size: 24px;
+            color: #065f46;
+            font-weight: 800;
+            line-height: 1.1;
+        }
+
+        .logo-text p {
+            font-size: 13px;
+            color: #6b7280;
+            margin-top: 2px;
+        }
+
+        .freq-badge {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 20px;
             letter-spacing: -0.5px;
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25);
         }
 
-        .radio-tagline {
-            font-size: 16px;
-            color: #a7f3d0;
-            opacity: 0.9;
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
         }
 
-        .status-badge {
+        .nav-links a {
+            color: #374151;
+            text-decoration: none;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .nav-links a:hover {
+            background: #ecfdf5;
+            color: #059669;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a4d2e 50%, #0f172a 100%);
+            color: white;
+            padding: 50px 20px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-text h2 {
+            font-size: 42px;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff, #a7f3d0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text .tagline {
+            font-size: 18px;
+            color: #6ee7b7;
+            margin-bottom: 28px;
+            font-weight: 500;
+        }
+
+        .hero-text .cta-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            border: none;
+            text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(239, 68, 68, 0.2);
-            color: #fca5a5;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 16px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: all 0.25s ease;
         }
 
-        .status-badge.active {
-            opacity: 1;
+        .btn-primary {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
         }
 
-        .status-dot {
-            width: 8px;
-            height: 8px;
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(16, 185, 129, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.18);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .now-playing-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 24px;
+            padding: 28px;
+        }
+
+        .now-playing-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .live-dot {
+            width: 10px;
+            height: 10px;
             background: #ef4444;
             border-radius: 50%;
             animation: pulse 1.5s infinite;
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
         }
 
-        .player-section {
-            margin-bottom: 32px;
+        .live-label {
+            color: #fca5a5;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
         }
 
-        .play-button {
+        .listeners {
+            margin-left: auto;
+            color: #a7f3d0;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .np-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .np-album {
             width: 100px;
             height: 100px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #10b981, #059669, #064e3b);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 48px;
+            flex-shrink: 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .np-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .np-label {
+            font-size: 11px;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .np-song {
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .np-artist {
+            font-size: 14px;
+            color: #9ca3af;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .equalizer-mini {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-end;
+            gap: 3px;
+            height: 20px;
+            margin-top: 16px;
+        }
+
+        .eq-bar {
+            width: 4px;
+            background: linear-gradient(to top, #10b981, #34d399);
+            border-radius: 2px;
+            height: 6px;
+        }
+
+        .equalizer-mini.active .eq-bar:nth-child(1) { animation: eqm1 0.4s infinite alternate; }
+        .equalizer-mini.active .eq-bar:nth-child(2) { animation: eqm2 0.5s infinite alternate; }
+        .equalizer-mini.active .eq-bar:nth-child(3) { animation: eqm3 0.35s infinite alternate; }
+        .equalizer-mini.active .eq-bar:nth-child(4) { animation: eqm4 0.45s infinite alternate; }
+        .equalizer-mini.active .eq-bar:nth-child(5) { animation: eqm5 0.55s infinite alternate; }
+
+        @keyframes eqm1 { to { height: 20px; } }
+        @keyframes eqm2 { to { height: 12px; } }
+        @keyframes eqm3 { to { height: 18px; } }
+        @keyframes eqm4 { to { height: 10px; } }
+        @keyframes eqm5 { to { height: 15px; } }
+
+        section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-label {
+            display: inline-block;
+            color: #059669;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            color: #111827;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .section-subtitle {
+            font-size: 16px;
+            color: #6b7280;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .schedule-day {
+            background: white;
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            border: 1px solid #f3f4f6;
+        }
+
+        .day-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #065f46;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #ecfdf5;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .day-title.today {
+            color: #dc2626;
+        }
+
+        .day-title.today::after {
+            content: 'HOJE';
+            font-size: 10px;
+            background: #fee2e2;
+            color: #dc2626;
+            padding: 3px 8px;
+            border-radius: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .program-item {
+            padding: 12px 0;
+            border-bottom: 1px dashed #f3f4f6;
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+
+        .program-item:last-child {
+            border-bottom: none;
+        }
+
+        .program-time {
+            font-size: 12px;
+            font-weight: 700;
+            color: #059669;
+            background: #ecfdf5;
+            padding: 5px 10px;
+            border-radius: 8px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .program-info h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 2px;
+        }
+
+        .program-info p {
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        .about-section {
+            background: white;
+            border-radius: 24px;
+            padding: 0;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .about-content {
+            padding: 48px 40px;
+        }
+
+        .about-content h3 {
+            font-size: 28px;
+            color: #111827;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            font-size: 15px;
+            color: #4b5563;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .about-features {
+            list-style: none;
+            margin-top: 24px;
+        }
+
+        .about-features li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #374151;
+            font-size: 14px;
+        }
+
+        .about-features li::before {
+            content: '✓';
+            background: #10b981;
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, #065f46 0%, #059669 50%, #10b981 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 160px;
+            position: relative;
+            overflow: hidden;
+            min-height: 300px;
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.1), transparent 60%);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: 20px;
+            padding: 28px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            border: 1px solid #f3f4f6;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        a.contact-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            margin: 0 auto 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 28px;
+        }
+
+        .contact-card.whatsapp .contact-icon { background: #dcfce7; }
+        .contact-card.instagram .contact-icon { background: #fce7f3; }
+        .contact-card.facebook .contact-icon { background: #dbeafe; }
+        .contact-card.phone .contact-icon { background: #fef3c7; }
+        .contact-card.email .contact-icon { background: #e0e7ff; }
+        .contact-card.location .contact-icon { background: #ffedd5; }
+
+        .contact-card h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 6px;
+        }
+
+        .contact-card p {
+            font-size: 13px;
+            color: #6b7280;
+            line-height: 1.5;
+        }
+
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 20px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .footer-slogan {
+            font-size: 14px;
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+
+        .footer-copyright {
+            font-size: 12px;
+            color: #475569;
+            padding-top: 20px;
+            border-top: 1px solid #1e293b;
+        }
+
+        .fixed-player {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 12px 20px;
+            z-index: 999;
+        }
+
+        .player-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .player-info {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            min-width: 0;
+            flex: 1;
+        }
+
+        .player-mini-logo {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 26px;
+            flex-shrink: 0;
+        }
+
+        .player-np {
+            min-width: 0;
+        }
+
+        .player-np-song {
+            font-size: 14px;
+            font-weight: 600;
+            color: white;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .player-np-station {
+            font-size: 12px;
+            color: #94a3b8;
+        }
+
+        .player-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .play-btn {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
             background: linear-gradient(135deg, #10b981, #059669);
             border: none;
-            border-radius: 50%;
+            color: white;
+            font-size: 20px;
             cursor: pointer;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 0 auto 32px;
-            box-shadow: 0 10px 40px rgba(16, 185, 129, 0.4);
-            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+            transition: all 0.2s ease;
+            flex-shrink: 0;
         }
 
-        .play-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 50px rgba(16, 185, 129, 0.5);
+        .play-btn:hover {
+            transform: scale(1.06);
         }
 
-        .play-button:active {
-            transform: scale(0.98);
+        .play-btn:active {
+            transform: scale(0.96);
         }
 
-        .play-button.playing {
+        .play-btn.playing {
             background: linear-gradient(135deg, #ef4444, #dc2626);
-            box-shadow: 0 10px 40px rgba(239, 68, 68, 0.4);
+            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
         }
 
-        .play-button svg {
-            width: 40px;
-            height: 40px;
-            fill: white;
-            margin-left: 4px;
-        }
-
-        .play-button.playing svg {
-            margin-left: 0;
-        }
-
-        .equalizer {
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            gap: 4px;
-            height: 40px;
-            margin-bottom: 32px;
-        }
-
-        .bar {
-            width: 6px;
-            background: linear-gradient(to top, #10b981, #34d399);
-            border-radius: 3px;
-            height: 8px;
-            transition: height 0.1s ease;
-        }
-
-        .equalizer.active .bar:nth-child(1) { animation: eq1 0.4s infinite alternate; }
-        .equalizer.active .bar:nth-child(2) { animation: eq2 0.5s infinite alternate; }
-        .equalizer.active .bar:nth-child(3) { animation: eq3 0.35s infinite alternate; }
-        .equalizer.active .bar:nth-child(4) { animation: eq4 0.45s infinite alternate; }
-        .equalizer.active .bar:nth-child(5) { animation: eq5 0.55s infinite alternate; }
-
-        @keyframes eq1 { to { height: 40px; } }
-        @keyframes eq2 { to { height: 25px; } }
-        @keyframes eq3 { to { height: 35px; } }
-        @keyframes eq4 { to { height: 20px; } }
-        @keyframes eq5 { to { height: 30px; } }
-
-        .volume-control {
+        .volume-wrap {
             display: flex;
             align-items: center;
-            gap: 16px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
+            gap: 10px;
+            min-width: 140px;
         }
 
         .volume-icon {
-            font-size: 24px;
-            opacity: 0.8;
+            color: #94a3b8;
+            font-size: 18px;
+            flex-shrink: 0;
         }
 
         .volume-slider {
             flex: 1;
             -webkit-appearance: none;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.2);
+            height: 5px;
+            background: rgba(255, 255, 255, 0.15);
             border-radius: 3px;
             outline: none;
         }
 
         .volume-slider::-webkit-slider-thumb {
             -webkit-appearance: none;
-            width: 20px;
-            height: 20px;
+            width: 16px;
+            height: 16px;
             background: #10b981;
             border-radius: 50%;
             cursor: pointer;
@@ -205,8 +748,8 @@
         }
 
         .volume-slider::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
+            width: 16px;
+            height: 16px;
             background: #10b981;
             border-radius: 50%;
             cursor: pointer;
@@ -214,34 +757,44 @@
             box-shadow: 0 2px 8px rgba(16, 185, 129, 0.5);
         }
 
-        .listen-button {
-            width: 100%;
-            padding: 18px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(16, 185, 129, 0.5);
-            border-radius: 16px;
-            color: #34d399;
-            font-size: 18px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .whatsapp-float {
+            position: fixed;
+            right: 20px;
+            bottom: 110px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #25D366;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            text-decoration: none;
+            box-shadow: 0 8px 28px rgba(37, 211, 102, 0.5);
+            z-index: 998;
+            transition: all 0.25s ease;
+            animation: float-bounce 2s infinite;
         }
 
-        .listen-button:hover {
-            background: rgba(16, 185, 129, 0.2);
-            border-color: #10b981;
+        .whatsapp-float:hover {
+            transform: scale(1.1) translateY(-3px);
+            box-shadow: 0 12px 36px rgba(37, 211, 102, 0.6);
+        }
+
+        @keyframes float-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
         }
 
         .error-message {
-            text-align: center;
-            color: #fca5a5;
-            font-size: 14px;
-            margin-top: 20px;
-            padding: 16px;
-            background: rgba(239, 68, 68, 0.1);
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #991b1b;
+            padding: 14px 18px;
             border-radius: 12px;
+            margin-top: 16px;
+            font-size: 13px;
             display: none;
         }
 
@@ -250,91 +803,616 @@
         }
 
         .error-message a {
-            color: #34d399;
+            color: #059669;
             text-decoration: underline;
-            margin-top: 8px;
+            font-weight: 600;
             display: inline-block;
+            margin-top: 6px;
         }
 
-        @media (max-width: 480px) {
-            .container {
-                padding: 30px 24px;
+        @media (max-width: 900px) {
+            .hero-content {
+                grid-template-columns: 1fr;
             }
 
-            .radio-icon {
-                width: 100px;
-                height: 100px;
-                font-size: 48px;
+            .hero-text h2 {
+                font-size: 32px;
             }
 
-            .radio-name {
+            .about-section {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                min-height: 200px;
+                font-size: 100px;
+                order: -1;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .top-header {
+                font-size: 11px;
+            }
+
+            .top-header a {
+                margin-left: 10px;
+            }
+
+            .header-content {
+                padding: 12px 16px;
+            }
+
+            .logo-img {
+                width: 48px;
+                height: 48px;
                 font-size: 24px;
             }
 
-            .play-button {
-                width: 88px;
-                height: 88px;
+            .logo-text h1 {
+                font-size: 18px;
+            }
+
+            .logo-text p {
+                font-size: 11px;
+            }
+
+            .freq-badge {
+                font-size: 16px;
+                padding: 6px 12px;
+            }
+
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+                order: 3;
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                padding-bottom: 4px;
+            }
+
+            .nav-links a {
+                padding: 6px 10px;
+                font-size: 13px;
+                white-space: nowrap;
+            }
+
+            section {
+                padding: 40px 16px;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+
+            .hero {
+                padding: 40px 16px 32px;
+            }
+
+            .hero-text h2 {
+                font-size: 28px;
+            }
+
+            .hero-text .tagline {
+                font-size: 15px;
+            }
+
+            .np-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .equalizer-mini {
+                justify-content: center;
+            }
+
+            .about-content {
+                padding: 32px 24px;
+            }
+
+            .player-info {
+                gap: 10px;
+            }
+
+            .player-mini-logo {
+                display: none;
+            }
+
+            .volume-wrap {
+                display: none;
+            }
+
+            .player-np-song {
+                font-size: 12px;
+            }
+
+            .whatsapp-float {
+                width: 52px;
+                height: 52px;
+                font-size: 26px;
+                right: 14px;
+                bottom: 100px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="radio-header">
-            <div class="radio-icon">📻</div>
-            <h1 class="radio-name">Verdes Campos FM</h1>
-            <p class="radio-tagline">A Região Se Liga Aqui!</p>
-            <div class="status-badge" id="statusBadge">
-                <span class="status-dot"></span>
-                AO VIVO
-            </div>
-        </div>
-
-        <div class="player-section">
-            <div class="equalizer" id="equalizer">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-
-            <button class="play-button" id="playButton">
-                <svg viewBox="0 0 24 24" id="playIcon">
-                    <path d="M8 5v14l11-7z"/>
-                </svg>
-            </button>
-
-            <div class="volume-control">
-                <span class="volume-icon">🔊</span>
-                <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.01" value="0.8">
-            </div>
-        </div>
-
-        <button class="listen-button" id="listenButton">Ouvir Agora</button>
-
-        <div class="error-message" id="errorMessage">
-            <p><strong>⚠️ Não foi possível conectar ao streaming.</strong> Verifique sua conexão com a internet ou tente ouvir diretamente.</p>
-            <a href="https://server12.srvsh.com.br:9238/stream" target="_blank">🎧 Clique aqui para ouvir diretamente no navegador</a>
-        </div>
-    </div>
-
     <audio id="audioPlayer" preload="none">
         <source src="https://server12.srvsh.com.br:9238/stream" type="audio/mpeg">
         Seu navegador não suporta o player de áudio.
     </audio>
 
+    <div class="top-header">
+        <div class="top-header-content">
+            <span>📻 A Região Se Liga Aqui!</span>
+            <div>
+                <a href="tel:+5500000000000">📞 (00) 0000-0000</a>
+                <a href="mailto:contato@verdescampos.com">✉️ contato@verdescampos.com</a>
+            </div>
+        </div>
+    </div>
+
+    <header>
+        <div class="header-content">
+            <div class="logo-area">
+                <div class="logo-img">📻</div>
+                <div class="logo-text">
+                    <h1>Verdes Campos FM</h1>
+                    <p>A rádio da sua região</p>
+                </div>
+                <div class="freq-badge">FM 92,3</div>
+            </div>
+            <nav class="nav-links">
+                <a href="#inicio">Início</a>
+                <a href="#ao-vivo">Ao Vivo</a>
+                <a href="#programacao">Programação</a>
+                <a href="#sobre">A Rádio</a>
+                <a href="#contato">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h2>Sintonize a sua rádio favorita!</h2>
+                <p class="tagline">Música, notícia, informação e companhia para o seu dia.</p>
+                <div class="cta-buttons">
+                    <a href="#ao-vivo" class="btn btn-primary">▶️ Ouvir Agora</a>
+                    <a href="https://wa.me/5500000000000?text=Ol%C3%A1%20Verdes%20Campos%20FM!%20Gostaria%20de%20fazer%20um%20pedido." target="_blank" class="btn btn-secondary">💬 Pedir Música</a>
+                </div>
+                <div class="error-message" id="errorMessage">
+                    <p><strong>⚠️ Não foi possível conectar ao streaming.</strong> Verifique sua conexão com a internet ou tente ouvir diretamente.</p>
+                    <a href="https://server12.srvsh.com.br:9238/stream" target="_blank">🎧 Clique aqui para ouvir diretamente no navegador</a>
+                </div>
+            </div>
+
+            <div class="now-playing-card" id="ao-vivo">
+                <div class="now-playing-header">
+                    <div class="live-dot"></div>
+                    <span class="live-label">Transmitindo Ao Vivo</span>
+                    <span class="listeners" id="listenersCount">👥 -- ouvintes</span>
+                </div>
+                <div class="np-content">
+                    <div class="np-album" id="npAlbum">🎵</div>
+                    <div class="np-info">
+                        <div class="np-label">Tocando Agora</div>
+                        <div class="np-song" id="npSong">Sintonize e aproveite!</div>
+                        <div class="np-artist" id="npArtist">Verdes Campos FM 92,3</div>
+                        <div class="equalizer-mini" id="equalizerMini">
+                            <div class="eq-bar"></div>
+                            <div class="eq-bar"></div>
+                            <div class="eq-bar"></div>
+                            <div class="eq-bar"></div>
+                            <div class="eq-bar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="programacao">
+        <div class="section-header">
+            <span class="section-label">Nossa Grade</span>
+            <h2 class="section-title">Programação Semanal</h2>
+            <p class="section-subtitle">Confira os programas que fazem a sua programação todos os dias.</p>
+        </div>
+
+        <div class="schedule-grid">
+            <div class="schedule-day">
+                <div class="day-title">☀️ Segunda-feira</div>
+                <div class="program-item">
+                    <span class="program-time">06h - 09h</span>
+                    <div class="program-info">
+                        <h4>Café com a Manhã</h4>
+                        <p>Com Ângela Campos - Notícias e as melhores músicas</p>
+                    </div>
+                </div>
+                <div class="program-item">
+                    <span class="program-time">09h - 12h</span>
+                    <div class="program-info">
+                        <h4>Variedades em Família</h4>
+                        <p>Com Junior Silva - Entretenimento e interação</p>
+                    </div>
+                </div>
+                <div class="program-item">
+                    <span class="program-time">12h - 13h</span>
+                    <div class="program-info">
+                        <h4>Jornal da Região</h4>
+                        <p>Principais notícias locais e do estado</p>
+                    </div>
+                </div>
+                <div class="program-item">
+                    <span class="program-time">13h - 17h</span>
+                    <div class="program-info">
+                        <h4>Tarde de Sucessos</h4>
+                        <p>Com Márcia - Sertanejo e Hits do Momento</p>
+                    </div>
+                </div>
+                <div class="program-item">
+                    <span class="program-time">19h - 21h</span>
+                    <div class="program-info">
+                        <h4>Noite Romântica</h4>
+                        <p>As melhores canções para o seu final de tarde</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="schedule-day">
+                <div class="day-title">🌤️ Terça-feira</div>
+                <div class="program-item">
+                    <span class="program-time">06h - 09h</span>
+                    <div class="program-info">
+                        <h4>Café com a Manhã</h4>
+                        <p>Com Ângela Campos - Notícias e as melhores músicas</p>
+                    </div>
+                </div>
+                <div class="program-item">
+                    <span class="program-time">09h - 12h</span>
+                    <div class="program-info">
+                        <h4>Variedades em Família</h4>
+                        <p>Com Junior Silva - Entretenimento e interação</p>
+                    </div>
+                </div>
+                <div class="program-item">
+                    <span class="program-time">12h - 13h</span>
+                    <div class="program-info">
+                        <h4>Jornal da Região</h4>
+                        <p>Principais notícias locais e do estado</p>
+                    </div>
+                </div>
+                <div class="program-item">
+                    <span class="program-time">15h - 17h</span>
+                    <div class="program-info">
+                        <h4>📞 Ligação ao Vivo</h4>
+                        <p>Seu pedido, sua música, sua voz no ar!</p>
+                    </div>
+                </div>
+                <div class="program-item">
+                    <span class="program-time">21h - 24h</span>
+                    <div class="program-info">
+                        <h4>Flashback Night</h4>
+                        <p>Clássicos dos anos 80, 90 e 2000</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="schedule-day">
+                <div class="day-title">🌤️ Quarta-feira</div>
+                <div class="program-item">
+                    <span class="program-time">06h - 09h</span>
+                    <div class="program-info">
+                        <h4>Café com a Manhã</h4>
+                        <p>Com Ângela Campos - Notícias e as melhores músicas</p>
+                    </div>
+                </div>
+                <div class="program-item">
+                    <span class="program-time">09h - 11h</span>
+                    <div class="program-info">
+                        <h4>Saúde & Vida</h4>
+                        <p>Dicas de saúde, entrevistas com especialistas</p>
+                    </div>
+                </div>
+                <div class="program-item">
+                    <span class="program-time">12h - 13h</span>
+                    <div class="program-info">
+                        <h4>Jornal da Região</h4>
+                        <p>Principais notícias locais e do estado</p>
+                    </div>
+                </div>
+                <div class="program-item">
+                    <span class="program-time">14h - 16h</span>
+                    <div class="program-info">
+                        <h4>Moda & Beleza</h4>
+                        <p>Com Luiza - Dicas e tendências</p>
+                    </div>
+                </div>
+                <div class="program-item">
+                    <span class="program-time">19h - 23h</span>
+                    <div class="program-info">
+                        <h4>Desapegados FM</h4>
+                        <p>O melhor do sertanejo universitário</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="schedule-day">
+                <div class="day-title">☀️ Quinta-feira</div>
+                <div class="program-item">
+                    <span class="program-time">06h - 09h</span>
+                    <div class="program-info">
+                        <h4>Café com a Manhã</h4>
+                        <p>Com Ângela Campos</p>
+                    </div>
+                </div>
+                <div class="program-item">
+                    <span class="program-time">10h - 12h</span>
+                    <div class="program-info">
+                        <h4>Mercado & Negócios</h4>
+                        <p>Economia, agronegócio e oportunidades</p>
+                    </div>
+                </div>
+                <div class="program-item">
+                    <span class="program-time">12h - 13h</span>
+                    <div class="program-info">
+                        <h4>Jornal da Região</h4>
+                        <p>Principais notícias locais</p>
+                    </div>
+                </div>
+                <div class="program-item">
+                    <span class="program-time">17h - 19h</span>
+                    <div class="program-info">
+                        <h4>Esporte Total</h4>
+                        <p>Notícias do esporte local e nacional</p>
+                    </div>
+                </div>
+                <div class="program-item">
+                    <span class="program-time">20h - 22h</span>
+                    <div class="program-info">
+                        <h4>Quinta do Brega</h4>
+                        <p>Os clássicos do brega e calipso</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="schedule-day">
+                <div class="day-title today">🌤️ Sexta-feira</div>
+                <div class="program-item">
+                    <span class="program-time">06h - 09h</span>
+                    <div class="program-info">
+                        <h4>Café com a Manhã</h4>
+                        <p>Com Ângela Campos - Bom dia, sexta!</p>
+                    </div>
+                </div>
+                <div class="program-item">
+                    <span class="program-time">09h - 12h</span>
+                    <div class="program-info">
+                        <h4>Variedades em Família</h4>
+                        <p>Com Junior Silva</p>
+                    </div>
+                </div>
+                <div class="program-item">
+                    <span class="program-time">13h - 15h</span>
+                    <div class="program-info">
+                        <h4>Pedidos dos Ouvintes</h4>
+                        <p>📞 Ligue e peça sua música!</p>
+                    </div>
+                </div>
+                <div class="program-item">
+                    <span class="program-time">18h - 21h</span>
+                    <div class="program-info">
+                        <h4>Happy Hour FM</h4>
+                        <p>Para animar sua sexta-feira!</p>
+                    </div>
+                </div>
+                <div class="program-item">
+                    <span class="program-time">22h - 02h</span>
+                    <div class="program-info">
+                        <h4>Sexta Dançante</h4>
+                        <p>Pagode, Forró e muito mais!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="schedule-day">
+                <div class="day-title">🌞 Sábado</div>
+                <div class="program-item">
+                    <span class="program-time">08h - 10h</span>
+                    <div class="program-info">
+                        <h4>Manhã do Sábado</h4>
+                        <p>Música suave e informação</p>
+                    </div>
+                </div>
+                <div class="program-item">
+                    <span class="program-time">10h - 12h</span>
+                    <div class="program-info">
+                        <h4>Programa do João</h4>
+                        <p>O melhor da música caipira</p>
+                    </div>
+                </div>
+                <div class="program-item">
+                    <span class="program-time">14h - 16h</span>
+                    <div class="program-info">
+                        <h4>Rádio Amiga</h4>
+                        <p>Recados, aniversários e pedidos</p>
+                    </div>
+                </div>
+                <div class="program-item">
+                    <span class="program-time">17h - 20h</span>
+                    <div class="program-info">
+                        <h4>Top 10 da Semana</h4>
+                        <p>Os 10 maiores sucessos da semana</p>
+                    </div>
+                </div>
+                <div class="program-item">
+                    <span class="program-time">21h - 00h</span>
+                    <div class="program-info">
+                        <h4>Sábado Show</h4>
+                        <p>Até alta madrugada com você!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="schedule-day">
+                <div class="day-title">⛅ Domingo</div>
+                <div class="program-item">
+                    <span class="program-time">08h - 10h</span>
+                    <div class="program-info">
+                        <h4>Despertar Espiritual</h4>
+                        <p>Mensagem de fé e esperança</p>
+                    </div>
+                </div>
+                <div class="program-item">
+                    <span class="program-time">10h - 12h</span>
+                    <div class="program-info">
+                        <h4>Domingo com Família</h4>
+                        <p>Música para reunir a família toda</p>
+                    </div>
+                </div>
+                <div class="program-item">
+                    <span class="program-time">12h - 14h</span>
+                    <div class="program-info">
+                        <h4>Almoço Musical</h4>
+                        <p>Sertanejo raiz</p>
+                    </div>
+                </div>
+                <div class="program-item">
+                    <span class="program-time">15h - 18h</span>
+                    <div class="program-info">
+                        <h4>Recados de Domingo</h4>
+                        <p>Aniversariantes, recados e pedidos</p>
+                    </div>
+                </div>
+                <div class="program-item">
+                    <span class="program-time">19h - 22h</span>
+                    <div class="program-info">
+                        <h4>Dominguão FM</h4>
+                        <p>Forró e axé para animar o domingo</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre">
+        <div class="about-section">
+            <div class="about-content">
+                <span class="section-label">Nossa História</span>
+                <h3>A rádio que é a voz da região</h3>
+                <p>A Verdes Campos FM nasceu com o propósito de ser a voz do nosso povo. Levamos informação, entretenimento, cultura e, claro, muita música para milhares de ouvintes todos os dias.</p>
+                <p>Com uma equipe apaixonada pelo que faz, estamos sempre próximos da comunidade, participando de eventos, levando notícias do município e região, e fazendo parte do dia a dia de cada ouvinte.</p>
+                <ul class="about-features">
+                    <li>Transmissão 100% digital e em áudio de qualidade</li>
+                    <li>Equipe de comunicadores experientes e engajados</li>
+                    <li>Cobertura de eventos locais e regionais</li>
+                    <li>Parcerias com empresas da região</li>
+                    <li>Interação direta com os ouvintes</li>
+                    <li>Programação diversificada para todos os gostos</li>
+                </ul>
+            </div>
+            <div class="about-image">📡</div>
+        </div>
+    </section>
+
+    <section id="contato">
+        <div class="section-header">
+            <span class="section-label">Fale Conosco</span>
+            <h2 class="section-title">Entre em Contato</h2>
+            <p class="section-subtitle">Estamos aqui para ouvir você! Pedidos, recados, sugestões ou parcerias.</p>
+        </div>
+
+        <div class="contact-grid">
+            <a href="https://wa.me/5500000000000?text=Ol%C3%A1%20Verdes%20Campos%20FM!" target="_blank" class="contact-card whatsapp">
+                <div class="contact-icon">💬</div>
+                <h4>WhatsApp</h4>
+                <p>Pedir música, recado ou falar com a equipe</p>
+            </a>
+
+            <a href="https://instagram.com/verdescamposfm" target="_blank" class="contact-card instagram">
+                <div class="contact-icon">📷</div>
+                <h4>Instagram</h4>
+                <p>@verdescamposfm</p>
+            </a>
+
+            <a href="https://facebook.com/verdescamposfm" target="_blank" class="contact-card facebook">
+                <div class="contact-icon">👥</div>
+                <h4>Facebook</h4>
+                <p>/verdescamposfm</p>
+            </a>
+
+            <a href="tel:+5500000000000" class="contact-card phone">
+                <div class="contact-icon">📞</div>
+                <h4>Telefone</h4>
+                <p>(00) 0000-0000<br>Ligue ao vivo!</p>
+            </a>
+
+            <a href="mailto:contato@verdescampos.com" class="contact-card email">
+                <div class="contact-icon">✉️</div>
+                <h4>E-mail</h4>
+                <p>contato@verdescampos.com</p>
+            </a>
+
+            <div class="contact-card location">
+                <div class="contact-icon">📍</div>
+                <h4>Estúdio</h4>
+                <p>Centro da Região<br>Campos Verdes, Brasil</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">📻 Verdes Campos FM</div>
+            <div class="footer-slogan">A Região Se Liga Aqui! • FM 92,3</div>
+            <div class="footer-copyright">© 2026 Verdes Campos FM. Todos os direitos reservados.</div>
+        </div>
+    </footer>
+
+    <div class="fixed-player">
+        <div class="player-inner">
+            <div class="player-info">
+                <div class="player-mini-logo">📻</div>
+                <div class="player-np">
+                    <div class="player-np-song" id="playerNpSong">Verdes Campos FM - Ao Vivo</div>
+                    <div class="player-np-station">92,3 MHz • A Região Se Liga Aqui</div>
+                </div>
+            </div>
+            <div class="player-controls">
+                <button class="play-btn" id="playButton" aria-label="Tocar / Pausar">
+                    <svg id="playIcon" width="22" height="22" viewBox="0 0 24 24" fill="white">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                </button>
+                <div class="volume-wrap">
+                    <span class="volume-icon" id="volumeIcon">🔊</span>
+                    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.01" value="0.8">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://wa.me/5500000000000?text=Ol%C3%A1%20Verdes%20Campos%20FM!%20Gostaria%20de%20fazer%20um%20pedido." target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+        💬
+    </a>
+
     <script>
         const audioPlayer = document.getElementById('audioPlayer');
         const playButton = document.getElementById('playButton');
         const playIcon = document.getElementById('playIcon');
-        const statusBadge = document.getElementById('statusBadge');
-        const equalizer = document.getElementById('equalizer');
+        const equalizerMini = document.getElementById('equalizerMini');
         const volumeSlider = document.getElementById('volumeSlider');
-        const listenButton = document.getElementById('listenButton');
+        const volumeIcon = document.getElementById('volumeIcon');
         const errorMessage = document.getElementById('errorMessage');
+        const npSong = document.getElementById('npSong');
+        const npArtist = document.getElementById('npArtist');
+        const npAlbum = document.getElementById('npAlbum');
+        const playerNpSong = document.getElementById('playerNpSong');
+        const listenersCount = document.getElementById('listenersCount');
 
         let isPlaying = false;
+
+        const emojiAlbums = ['🎵', '🎸', '🎹', '🎤', '🎺', '🎷', '🥁', '🎻'];
 
         function togglePlay() {
             if (isPlaying) {
@@ -350,16 +1428,19 @@
             if (isPlaying) {
                 playButton.classList.add('playing');
                 playIcon.innerHTML = '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
-                statusBadge.classList.add('active');
-                equalizer.classList.add('active');
-                listenButton.textContent = 'Parar';
+                equalizerMini.classList.add('active');
             } else {
                 playButton.classList.remove('playing');
                 playIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
-                statusBadge.classList.remove('active');
-                equalizer.classList.remove('active');
-                listenButton.textContent = 'Ouvir Agora';
+                equalizerMini.classList.remove('active');
             }
+        }
+
+        function updateVolumeIcon() {
+            const v = audioPlayer.volume;
+            if (v === 0) volumeIcon.textContent = '🔇';
+            else if (v < 0.5) volumeIcon.textContent = '🔉';
+            else volumeIcon.textContent = '🔊';
         }
 
         audioPlayer.onplay = () => {
@@ -380,13 +1461,60 @@
         };
 
         volumeSlider.addEventListener('input', (e) => {
-            audioPlayer.volume = e.target.value;
+            audioPlayer.volume = parseFloat(e.target.value);
+            updateVolumeIcon();
         });
 
-        audioPlayer.volume = volumeSlider.value;
+        audioPlayer.volume = parseFloat(volumeSlider.value);
+        updateVolumeIcon();
 
         playButton.addEventListener('click', togglePlay);
-        listenButton.addEventListener('click', togglePlay);
+
+        async function fetchNowPlaying() {
+            try {
+                const response = await fetch('https://server12.srvsh.com.br:9238/statistics?json=1', {
+                    method: 'GET',
+                    mode: 'cors'
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data && data.streams && data.streams[0]) {
+                        const stream = data.streams[0];
+                        if (stream.songtitle) {
+                            let parts = stream.songtitle.split(' - ');
+                            if (parts.length >= 2) {
+                                npArtist.textContent = parts[0].trim();
+                                npSong.textContent = parts.slice(1).join(' - ').trim();
+                            } else {
+                                npSong.textContent = stream.songtitle;
+                                npArtist.textContent = 'Ao Vivo';
+                            }
+                            playerNpSong.textContent = stream.songtitle;
+                            npAlbum.textContent = emojiAlbums[Math.floor(Math.random() * emojiAlbums.length)];
+                        }
+                        if (stream.currentlisteners !== undefined) {
+                            listenersCount.textContent = `👥 ${stream.currentlisteners} ouvintes`;
+                        }
+                    }
+                }
+            } catch (e) {
+            }
+        }
+
+        fetchNowPlaying();
+        setInterval(fetchNowPlaying, 15000);
+
+        (function highlightToday() {
+            const today = new Date().getDay();
+            const dayNames = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+            const todayName = dayNames[today];
+            const dayTitles = document.querySelectorAll('.day-title');
+            dayTitles.forEach(d => {
+                if (d.textContent.includes(todayName)) {
+                    d.classList.add('today');
+                }
+            });
+        })();
     </script>
 </body>
 </html>
